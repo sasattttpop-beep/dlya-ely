@@ -26,7 +26,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 10px; /* Уменьшил отступы */
+            padding: 10px;
             cursor: pointer;
             touch-action: manipulation;
         }
@@ -41,11 +41,11 @@
         
         /* СЕРДЦЕ - УМЕНЬШЕНО */
         .heart { 
-            margin: 10px 0; /* Уменьшил отступ */
+            margin: 10px 0;
             z-index: 10;
             position: relative;
-            width: 200px; /* Было 280px */
-            height: 180px; /* Было 250px */
+            width: 200px;
+            height: 180px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,7 +54,7 @@
         /* СЕРЕДИНА */
         .middle {
             width: 100%;
-            max-width: 450px; /* Уменьшил */
+            max-width: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -64,65 +64,92 @@
         .photos { 
             display: flex; 
             flex-wrap: wrap;
-            gap: 8px; /* Уменьшил */
-            margin: 10px 0; /* Уменьшил */
+            gap: 8px;
+            margin: 10px 0;
             justify-content: center;
             width: 100%;
+            transition: all 0.8s ease;
         }
         .photo {
-            width: 100px; /* Было 140px */
-            height: 100px; /* Было 140px */
+            width: 100px;
+            height: 100px;
             border-radius: 8px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.6);
             position: relative;
-            opacity: 0; /* Вернул анимацию */
-            transform: translateY(20px) scale(0.9); /* Вернул анимацию */
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .photo img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
+            transition: transform 0.5s ease;
         }
         .photo.show {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+        .photo.hide {
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.5s ease;
+        }
+        .photo-beat {
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.7), 
+                       inset 0 0 10px rgba(255, 182, 193, 0.3);
+            border-color: rgba(255, 209, 220, 0.9) !important;
+            z-index: 20;
+        }
         .text { 
             text-align: center; 
-            margin: 15px 0; /* Уменьшил */
+            margin: 15px 0;
             z-index: 10; 
+            transition: all 0.8s ease;
         }
         .name { 
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8em; /* Уменьшил */
+            font-size: 2.8em;
             color: #fff;
             margin-bottom: 5px;
             text-shadow: 
                 0 0 8px rgba(255, 255, 255, 0.7),
-                0 0 15px rgba(255, 107, 157, 0.5);
+                0 0 15px rgba(255, 107, 157, 0.5),
+                0 0 25px rgba(255, 107, 157, 0.3);
             font-weight: 700;
             letter-spacing: 1px;
-            padding: 8px 25px; /* Уменьшил */
+            padding: 8px 25px;
             display: inline-block;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 0 0 15px rgba(255, 255, 255, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.3);
         }
         .from { 
             font-family: 'Roboto', sans-serif;
-            font-size: 1em; /* Уменьшил */
+            font-size: 1em;
             color: #ffafcc; 
             font-weight: 300;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-top: 10px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.5),
+                0 0 10px rgba(255, 182, 193, 0.3);
             padding: 6px 15px;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text.show .name,
+        .text.show .from {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* НИЗ - КРЕСТ УМЕНЬШЕН */
@@ -134,19 +161,19 @@
             justify-content: flex-end;
             position: relative;
             z-index: 10;
-            margin-bottom: 20px; /* Уменьшил */
-            min-height: 150px; /* Уменьшил */
+            margin-bottom: 20px;
+            min-height: 150px;
         }
         .inverted-cross {
-            width: 120px; /* Было 180px */
-            height: 180px; /* Было 280px */
+            width: 120px;
+            height: 180px;
             position: relative;
-            margin: 15px 0; /* Уменьшил */
+            margin: 15px 0;
             opacity: 0.9;
         }
         .cross-vertical {
             position: absolute;
-            width: 12px; /* Было 18px */
+            width: 12px;
             height: 100%;
             background: #222;
             left: 50%;
@@ -159,7 +186,7 @@
         .cross-horizontal {
             position: absolute;
             width: 100%;
-            height: 12px; /* Было 18px */
+            height: 12px;
             background: #222;
             top: 65%;
             left: 0;
@@ -171,12 +198,12 @@
         
         .music-notice {
             position: fixed;
-            bottom: 15px; /* Уменьшил */
+            bottom: 15px;
             background: rgba(255, 107, 157, 0.25);
             color: #ffe6ee;
-            padding: 10px 20px; /* Уменьшил */
+            padding: 10px 20px;
             border-radius: 20px;
-            font-size: 13px; /* Уменьшил */
+            font-size: 13px;
             z-index: 100;
             border: 1px solid rgba(255, 182, 193, 0.5);
             backdrop-filter: blur(10px);
@@ -185,16 +212,73 @@
             max-width: 85%;
             text-align: center;
             opacity: 1;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
         
-        /* УМЕНЬШЕННАЯ ПУЛЬСАЦИЯ СЕРДЦА */
+        /* АНИМАЦИИ СЕРДЦА - УМЕНЬШЕННЫЕ */
         .heart-beat {
-            animation: heartBeat 0.2s ease-out; /* Увеличил время, уменьшил эффект */
+            animation: heartBeat 0.2s ease-out;
         }
         @keyframes heartBeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); } /* Было 1.15 - СИЛЬНО уменьшил */
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        
+        /* ЧАСТИЦЫ - ВЕРНУЛ */
+        .white-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+        @keyframes particleExplode {
+            0% {
+                opacity: 0.9;
+                transform: translate(0, 0) scale(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: 
+                    translate(
+                        calc(var(--tx) * var(--distance)), 
+                        calc(var(--ty) * var(--distance))
+                    ) 
+                    scale(0.1);
+            }
+        }
+        @keyframes particleAppear {
+            0% {
+                opacity: 0;
+                transform: 
+                    translate(
+                        calc(var(--tx) * var(--start-distance)), 
+                        calc(var(--ty) * var(--start-distance))
+                    ) 
+                    scale(0.1);
+            }
+            60% {
+                opacity: 0.9;
+                transform: translate(0, 0) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
         }
         
         /* Для iPhone */
@@ -240,13 +324,13 @@
         <source src="music/musik.mp3" type="audio/mpeg">
     </audio>
     
-    <div class="heart" id="heartContainer">
+    <div class="heart floating" id="heartContainer">
         <canvas id="heartCanvas" width="200" height="180"></canvas>
     </div>
     
     <div class="middle">
         <div class="photos" id="photosContainer"></div>
-        <div class="text">
+        <div class="text floating" id="textContainer">
             <div class="name">ЭЛЕ</div>
             <div class="from">От Шамира</div>
         </div>
@@ -282,38 +366,37 @@
             });
         }
         
-        // СЕРДЦЕ - УМЕНЬШЕННЫЙ КАНВАС
+        // СЕРДЦЕ
         const canvas = document.getElementById('heartCanvas');
         const ctx = canvas.getContext('2d');
-        const heartSize = Math.min(canvas.width, canvas.height) * 0.7; // Уменьшил
+        const heartSize = Math.min(canvas.width, canvas.height) * 0.7;
         let heartTime = 0;
         
         const SONG_BPM = 140;
         const BEAT_INTERVAL = (60 / SONG_BPM) * 1000;
         const BEAT_PATTERN = [
-            { strength: 0.8 }, // Уменьшил силу битов
+            { strength: 0.8 },
             { strength: 0.5 },
             { strength: 0.3 },
             { strength: 0.5 },
         ];
         
         function drawHeart() {
-            heartTime += 0.008; // Замедлил анимацию
+            heartTime += 0.008;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.save();
             ctx.translate(canvas.width/2, canvas.height/2);
             
             const beatIntensity = window.currentBeatIntensity || 0;
-            const baseAlpha = 0.5 + beatIntensity * 0.2; // Уменьшил яркость
+            const baseAlpha = 0.5 + beatIntensity * 0.2;
             
-            // Меньше линий для производительности
-            for (let i = 0; i < 80; i++) { // Было 120
-                const t = heartTime + i * 0.06; // Замедлил
+            for (let i = 0; i < 80; i++) {
+                const t = heartTime + i * 0.06;
                 const x = 16 * Math.sin(t)**3;
                 const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
                 
-                const lineAlpha = baseAlpha + Math.sin(t * 1.5) * 0.15; // Уменьшил мерцание
-                const lineWidth = 0.8 + beatIntensity * 0.3; // Уменьшил толщину
+                const lineAlpha = baseAlpha + Math.sin(t * 1.5) * 0.15;
+                const lineWidth = 0.8 + beatIntensity * 0.3;
                 
                 ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
                 ctx.lineWidth = lineWidth;
@@ -324,11 +407,12 @@
                 ctx.stroke();
             }
             
-            // Уменьшил свечение
+            // СВЕЧЕНИЕ - ВЕРНУЛ
             if (beatIntensity > 0.5) {
-                const glowRadius = heartSize/2 * beatIntensity * 0.7; // Уменьшил
+                const glowRadius = heartSize/2 * beatIntensity * 0.7;
                 const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, glowRadius);
                 gradient.addColorStop(0, `rgba(255, 107, 157, ${0.05 * beatIntensity})`);
+                gradient.addColorStop(0.5, `rgba(255, 107, 157, ${0.02 * beatIntensity})`);
                 gradient.addColorStop(1, 'rgba(255, 107, 157, 0)');
                 
                 ctx.fillStyle = gradient;
@@ -342,14 +426,103 @@
         }
         drawHeart();
         
-        // ВЕРНУЛ АНИМАЦИЮ ФОТО
+        // ЧАСТИЦЫ - ВЕРНУЛ
+        function createWhiteParticles(count, x, y, size, isExplode = true) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'white-particle';
+                
+                const particleSize = size || (2 + Math.random() * 3);
+                particle.style.width = `${particleSize}px`;
+                particle.style.height = `${particleSize}px`;
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = isExplode ? 
+                    (60 + Math.random() * 90) : 
+                    (20 + Math.random() * 50);
+                const tx = Math.cos(angle);
+                const ty = Math.sin(angle);
+                const startDistance = isExplode ? 0 : (20 + Math.random() * 40);
+                
+                particle.style.setProperty('--tx', tx);
+                particle.style.setProperty('--ty', ty);
+                particle.style.setProperty('--distance', `${distance}px`);
+                particle.style.setProperty('--start-distance', `${startDistance}px`);
+                
+                const brightness = 0.7 + Math.random() * 0.3;
+                particle.style.background = `rgba(255, 255, 255, ${brightness})`;
+                particle.style.boxShadow = `0 0 ${particleSize}px rgba(255, 255, 255, ${brightness})`;
+                
+                document.body.appendChild(particle);
+                
+                const animationName = isExplode ? 'particleExplode' : 'particleAppear';
+                const duration = isExplode ? 
+                    (0.5 + Math.random() * 0.3) : 
+                    (0.6 + Math.random() * 0.3);
+                
+                particle.style.animation = `${animationName} ${duration}s ease-out forwards`;
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, duration * 1000);
+            }
+        }
+        
+        // АНИМАЦИЯ ПОЯВЛЕНИЯ ФОТО - ВЕРНУЛ С ЧАСТИЦАМИ
         function showPhotos() {
             const photos = document.querySelectorAll('.photo');
+            const textContainer = document.getElementById('textContainer');
+            
+            textContainer.classList.add('show');
             
             photos.forEach((photo, index) => {
                 setTimeout(() => {
+                    const rect = photo.getBoundingClientRect();
+                    const centerX = rect.left + rect.width/2;
+                    const centerY = rect.top + rect.height/2;
+                    
+                    // ЧАСТИЦЫ ПОЯВЛЕНИЯ
+                    createWhiteParticles(15, centerX, centerY, 2, false);
+                    
+                    photo.classList.remove('hide');
                     photo.classList.add('show');
-                }, index * 150); // Ускорил анимацию
+                    
+                    setTimeout(() => {
+                        photo.style.transform = 'translateY(-3px) scale(1.03)';
+                        setTimeout(() => {
+                            photo.style.transform = 'translateY(0) scale(1)';
+                        }, 200);
+                    }, 300);
+                    
+                }, index * 150);
+            });
+        }
+        
+        // АНИМАЦИЯ РАСПАДА ФОТО - ВЕРНУЛ
+        function explodePhotos() {
+            const photos = document.querySelectorAll('.photo.show');
+            const textContainer = document.getElementById('textContainer');
+            
+            textContainer.classList.remove('show');
+            
+            photos.forEach((photo, photoIndex) => {
+                const rect = photo.getBoundingClientRect();
+                const centerX = rect.left + rect.width/2;
+                const centerY = rect.top + rect.height/2;
+                
+                setTimeout(() => {
+                    photo.classList.remove('show');
+                    photo.classList.add('hide');
+                }, 100);
+                
+                setTimeout(() => {
+                    // ЧАСТИЦЫ РАСПАДА
+                    createWhiteParticles(25 + Math.floor(Math.random() * 8), centerX, centerY, 3);
+                }, photoIndex * 40);
             });
         }
         
@@ -368,15 +541,41 @@
             
             window.currentBeatIntensity = beatStrength;
             
-            // УМЕНЬШЕННАЯ ПУЛЬСАЦИЯ
             heartContainer.classList.add('heart-beat');
-            const scale = 1 + (beatStrength * 0.08); // Было 0.15 - уменьшил
+            const scale = 1 + (beatStrength * 0.08);
             heartContainer.style.transform = `scale(${scale})`;
+            
+            // ЧАСТИЦЫ НА СИЛЬНЫХ БИТАХ
+            if (beatStrength > 0.6) {
+                const rect = heartContainer.getBoundingClientRect();
+                const centerX = rect.left + rect.width/2;
+                const centerY = rect.top + rect.height/2;
+                
+                createWhiteParticles(8, centerX, centerY, 1.5);
+            }
             
             setTimeout(() => {
                 heartContainer.classList.remove('heart-beat');
                 heartContainer.style.transform = 'scale(1)';
             }, 200);
+            
+            // ПУЛЬСАЦИЯ ФОТО НА БИТАХ
+            if (musicPlaying && beatStrength > 0.4) {
+                const photos = document.querySelectorAll('.photo.show');
+                if (photos.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * photos.length);
+                    const photo = photos[randomIndex];
+                    
+                    photo.classList.add('photo-beat');
+                    const photoScale = 1 + (beatStrength * 0.02);
+                    photo.style.transform = `translateY(-${beatStrength * 2}px) scale(${photoScale})`;
+                    
+                    setTimeout(() => {
+                        photo.classList.remove('photo-beat');
+                        photo.style.transform = 'translateY(0) scale(1)';
+                    }, 150);
+                }
+            }
             
             beatCounter++;
         }
@@ -389,13 +588,24 @@
             beatTimer = setInterval(triggerBeat, BEAT_INTERVAL);
         }
         
+        function stopVisualization() {
+            isVisualizing = false;
+            window.currentBeatIntensity = 0;
+            
+            if (beatTimer) clearInterval(beatTimer);
+            heartContainer.style.transform = 'scale(1)';
+            document.querySelectorAll('.photo-beat').forEach(photo => {
+                photo.classList.remove('photo-beat');
+                photo.style.transform = 'translateY(0) scale(1)';
+            });
+        }
+        
         function startMusic() {
             audio.play().then(() => {
                 musicPlaying = true;
                 musicNotice.textContent = "♪ Музыка ♪";
                 musicNotice.style.background = "rgba(255, 107, 157, 0.4)";
                 
-                // ВКЛЮЧАЕМ АНИМАЦИЮ ФОТО
                 showPhotos();
                 setTimeout(startVisualization, 500);
                 
@@ -408,17 +618,38 @@
             });
         }
         
+        function stopMusic() {
+            musicPlaying = false;
+            
+            // ЗАПУСКАЕМ АНИМАЦИЮ РАСПАДА
+            explodePhotos();
+            stopVisualization();
+            
+            document.querySelectorAll('.floating').forEach(el => {
+                el.classList.remove('floating');
+            });
+            
+            musicNotice.textContent = "Музыка остановлена";
+            musicNotice.style.display = "block";
+            musicNotice.style.opacity = "1";
+        }
+        
         function handleInteraction() {
             if (audio.paused && !musicPlaying) {
                 startMusic();
             } else if (!audio.paused && musicPlaying) {
                 audio.pause();
-                musicPlaying = false;
-                if (beatTimer) clearInterval(beatTimer);
-                musicNotice.textContent = "Музыка остановлена";
-                musicNotice.style.display = "block";
-                musicNotice.style.opacity = "1";
+                stopMusic();
             }
+        }
+        
+        function floatElements() {
+            const elements = document.querySelectorAll('.photo.show, .heart, .text');
+            elements.forEach(el => {
+                if (!el.classList.contains('floating')) {
+                    el.classList.add('floating');
+                }
+            });
         }
         
         audio.volume = 0.7;
@@ -427,20 +658,21 @@
             loadPhotos();
             window.currentBeatIntensity = 0;
             
-            // iPhone проверка
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
             if (isIOS) {
                 musicNotice.textContent = "Коснись для запуска музыки";
                 document.addEventListener('touchstart', handleInteraction, { once: true });
             } else {
-                // Для ПК/Андроид - автозапуск
                 setTimeout(() => {
                     audio.play().then(() => {
                         musicPlaying = true;
                         musicNotice.textContent = "♪ Музыка ♪";
                         showPhotos();
-                        setTimeout(startVisualization, 500);
+                        setTimeout(() => {
+                            startVisualization();
+                            floatElements();
+                        }, 500);
                         setTimeout(() => {
                             musicNotice.style.opacity = "0";
                             setTimeout(() => musicNotice.style.display = "none", 800);
