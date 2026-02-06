@@ -15,8 +15,6 @@
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
             -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
         }
         body {
@@ -28,9 +26,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 15px;
+            padding: 10px; /* Уменьшил отступы */
             cursor: pointer;
-            overflow: hidden;
             touch-action: manipulation;
         }
         .video-bg {
@@ -42,22 +39,22 @@
             filter: brightness(0.5) contrast(1.1) hue-rotate(190deg);
         }
         
+        /* СЕРДЦЕ - УМЕНЬШЕНО */
         .heart { 
-            margin: 20px 0; 
+            margin: 10px 0; /* Уменьшил отступ */
             z-index: 10;
             position: relative;
-            width: 280px;
-            height: 250px;
+            width: 200px; /* Было 280px */
+            height: 180px; /* Было 250px */
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        /* СЕРЕДИНА - ФОТО И ТЕКСТ */
+        /* СЕРЕДИНА */
         .middle {
             width: 100%;
-            max-width: 500px;
+            max-width: 450px; /* Уменьшил */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -67,79 +64,68 @@
         .photos { 
             display: flex; 
             flex-wrap: wrap;
-            gap: 12px; 
-            margin: 15px 0; 
-            z-index: 10; 
+            gap: 8px; /* Уменьшил */
+            margin: 10px 0; /* Уменьшил */
             justify-content: center;
             width: 100%;
-            max-width: 500px;
         }
         .photo {
-            width: 140px; 
-            height: 140px;
+            width: 100px; /* Было 140px */
+            height: 100px; /* Было 140px */
             border-radius: 8px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.6);
             position: relative;
-            opacity: 1; /* iPhone fix: сразу видимы */
-            transform: translateY(0) scale(1); /* iPhone fix */
+            opacity: 0; /* Вернул анимацию */
+            transform: translateY(20px) scale(0.9); /* Вернул анимацию */
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .photo img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            -webkit-user-drag: none;
+        }
+        .photo.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
         .text { 
             text-align: center; 
-            margin: 20px 0; 
+            margin: 15px 0; /* Уменьшил */
             z-index: 10; 
-            position: relative;
         }
-        
-        /* БЕЛАЯ ПОДСВЕТКА ТЕКСТА - ДОБАВЛЕНО */
         .name { 
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5em; 
+            font-size: 2.8em; /* Уменьшил */
             color: #fff;
             margin-bottom: 5px;
             text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.7),  /* Белая подсветка */
-                0 0 20px rgba(255, 107, 157, 0.5),  /* Розовая подсветка */
-                0 0 30px rgba(255, 107, 157, 0.3);  /* Лёгкое свечение */
+                0 0 8px rgba(255, 255, 255, 0.7),
+                0 0 15px rgba(255, 107, 157, 0.5);
             font-weight: 700;
             letter-spacing: 1px;
-            position: relative;
-            padding: 10px 30px;
+            padding: 8px 25px; /* Уменьшил */
             display: inline-block;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05); /* Лёгкий белый фон */
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                inset 0 0 20px rgba(255, 255, 255, 0.1),
-                0 5px 15px rgba(0, 0, 0, 0.3);
         }
-        
         .from { 
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2em; 
+            font-size: 1em; /* Уменьшил */
             color: #ffafcc; 
             font-weight: 300;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-top: 15px;
-            text-shadow: 
-                0 0 5px rgba(255, 255, 255, 0.5),  /* Белая подсветка */
-                0 0 10px rgba(255, 182, 193, 0.3);  /* Розовая подсветка */
-            padding: 8px 20px;
-            border-radius: 10px;
+            margin-top: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            padding: 6px 15px;
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(3px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* НИЗ - КРЕСТ */
+        /* НИЗ - КРЕСТ УМЕНЬШЕН */
         .bottom {
             width: 100%;
             display: flex;
@@ -148,145 +134,124 @@
             justify-content: flex-end;
             position: relative;
             z-index: 10;
-            margin-bottom: 30px;
-            min-height: 200px;
+            margin-bottom: 20px; /* Уменьшил */
+            min-height: 150px; /* Уменьшил */
         }
         .inverted-cross {
-            width: 180px;
-            height: 280px;
+            width: 120px; /* Было 180px */
+            height: 180px; /* Было 280px */
             position: relative;
-            margin: 20px 0;
+            margin: 15px 0; /* Уменьшил */
             opacity: 0.9;
         }
         .cross-vertical {
             position: absolute;
-            width: 18px;
+            width: 12px; /* Было 18px */
             height: 100%;
             background: #222;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 3px;
+            border-radius: 2px;
             box-shadow: 
-                inset 0 0 15px rgba(0,0,0,0.9),
-                0 0 15px rgba(0,0,0,0.7);
+                inset 0 0 10px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.7);
         }
         .cross-horizontal {
             position: absolute;
             width: 100%;
-            height: 18px;
+            height: 12px; /* Было 18px */
             background: #222;
             top: 65%;
             left: 0;
-            border-radius: 3px;
+            border-radius: 2px;
             box-shadow: 
-                inset 0 0 15px rgba(0,0,0,0.9),
-                0 0 15px rgba(0,0,0,0.7);
-        }
-        .cross-vertical::after,
-        .cross-horizontal::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 3px,
-                    rgba(100,100,100,0.2) 3px,
-                    rgba(100,100,100,0.2) 6px
-                );
-            border-radius: 3px;
+                inset 0 0 10px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.7);
         }
         
         .music-notice {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px; /* Уменьшил */
             background: rgba(255, 107, 157, 0.25);
             color: #ffe6ee;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 14px;
+            padding: 10px 20px; /* Уменьшил */
+            border-radius: 20px;
+            font-size: 13px; /* Уменьшил */
             z-index: 100;
             border: 1px solid rgba(255, 182, 193, 0.5);
             backdrop-filter: blur(10px);
             font-family: 'Roboto', sans-serif;
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.25);
-            max-width: 90%;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.25);
+            max-width: 85%;
             text-align: center;
             opacity: 1;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            font-weight: 400;
         }
         
+        /* УМЕНЬШЕННАЯ ПУЛЬСАЦИЯ СЕРДЦА */
         .heart-beat {
-            animation: heartBeat 0.15s ease-out;
+            animation: heartBeat 0.2s ease-out; /* Увеличил время, уменьшил эффект */
         }
         @keyframes heartBeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.05); } /* Было 1.15 - СИЛЬНО уменьшил */
             100% { transform: scale(1); }
         }
         
-        /* iPhone оптимизация */
+        /* Для iPhone */
         @media (max-width: 768px) {
-            .photo {
-                width: 110px;
-                height: 110px;
-            }
-            .name {
-                font-size: 2.8em;
-                padding: 8px 25px;
-            }
-            .from {
-                font-size: 1em;
-                padding: 6px 15px;
-            }
             .heart {
-                width: 240px;
-                height: 210px;
+                width: 180px;
+                height: 160px;
             }
-        }
-        @media (max-width: 480px) {
             .photo {
-                width: 90px;
-                height: 90px;
+                width: 85px;
+                height: 85px;
             }
             .name {
                 font-size: 2.3em;
                 padding: 6px 20px;
             }
+            .inverted-cross {
+                width: 100px;
+                height: 150px;
+            }
+        }
+        @media (max-width: 480px) {
+            .photo {
+                width: 75px;
+                height: 75px;
+            }
+            .name {
+                font-size: 2em;
+            }
+            .inverted-cross {
+                width: 90px;
+                height: 135px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- ВИДЕОФОН -->
     <video class="video-bg" autoplay muted loop playsinline>
         <source src="video/bg.mp4" type="video/mp4">
     </video>
     
-    <!-- МУЗЫКА -->
     <audio id="bgMusic" loop preload="auto" style="display: none;">
         <source src="music/musik.mp3" type="audio/mpeg">
     </audio>
     
-    <!-- ВЕРХ: СЕРДЕЧКО -->
     <div class="heart" id="heartContainer">
-        <canvas id="heartCanvas" width="280" height="250"></canvas>
+        <canvas id="heartCanvas" width="200" height="180"></canvas>
     </div>
     
-    <!-- СЕРЕДИНА: ФОТО И ТЕКСТ -->
     <div class="middle">
-        <div class="photos" id="photosContainer">
-            <!-- Фото загрузятся -->
-        </div>
+        <div class="photos" id="photosContainer"></div>
         <div class="text">
-            <!-- ТЕКСТ С БЕЛОЙ ПОДСВЕТКОЙ -->
             <div class="name">ЭЛЕ</div>
             <div class="from">От Шамира</div>
         </div>
     </div>
     
-    <!-- НИЗ: КРЕСТ -->
     <div class="bottom">
         <div class="inverted-cross">
             <div class="cross-vertical"></div>
@@ -297,7 +262,6 @@
     <div class="music-notice" id="musicNotice">Кликни для запуска музыки</div>
 
     <script>
-        // ФОТО
         const photoFiles = [
             'photo_2026-02-06_02-39-07.jpg',
             'photo_2026-02-06_02-39-31.jpg',
@@ -306,59 +270,50 @@
             'photo_2026-02-06_02-41-59.jpg'
         ];
         
-        // iPhone FIX: Сразу загружаем фото без ожидания музыки
         function loadPhotos() {
             const photosContainer = document.getElementById('photosContainer');
             photosContainer.innerHTML = '';
             
-            photoFiles.forEach((filename, index) => {
+            photoFiles.forEach((filename) => {
                 const photoDiv = document.createElement('div');
                 photoDiv.className = 'photo';
-                
-                // iPhone оптимизация: предзагрузка изображений
-                const img = new Image();
-                img.src = `photos/${filename}`;
-                img.onload = function() {
-                    photoDiv.innerHTML = `<img src="photos/${filename}" alt="Фото">`;
-                };
-                
+                photoDiv.innerHTML = `<img src="photos/${filename}" alt="Фото">`;
                 photosContainer.appendChild(photoDiv);
             });
-            
-            console.log('Фото загружены для iPhone');
         }
         
-        // СЕРДЕЧКО
+        // СЕРДЦЕ - УМЕНЬШЕННЫЙ КАНВАС
         const canvas = document.getElementById('heartCanvas');
         const ctx = canvas.getContext('2d');
-        const heartSize = Math.min(canvas.width, canvas.height) * 0.8;
+        const heartSize = Math.min(canvas.width, canvas.height) * 0.7; // Уменьшил
         let heartTime = 0;
         
         const SONG_BPM = 140;
         const BEAT_INTERVAL = (60 / SONG_BPM) * 1000;
         const BEAT_PATTERN = [
-            { strength: 1.0 },
-            { strength: 0.7 },
+            { strength: 0.8 }, // Уменьшил силу битов
             { strength: 0.5 },
-            { strength: 0.7 },
+            { strength: 0.3 },
+            { strength: 0.5 },
         ];
         
         function drawHeart() {
-            heartTime += 0.01;
+            heartTime += 0.008; // Замедлил анимацию
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.save();
             ctx.translate(canvas.width/2, canvas.height/2);
             
             const beatIntensity = window.currentBeatIntensity || 0;
-            const baseAlpha = 0.6 + beatIntensity * 0.3;
+            const baseAlpha = 0.5 + beatIntensity * 0.2; // Уменьшил яркость
             
-            for (let i = 0; i < 120; i++) {
-                const t = heartTime + i * 0.05;
+            // Меньше линий для производительности
+            for (let i = 0; i < 80; i++) { // Было 120
+                const t = heartTime + i * 0.06; // Замедлил
                 const x = 16 * Math.sin(t)**3;
                 const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
                 
-                const lineAlpha = baseAlpha + Math.sin(t * 2) * 0.2;
-                const lineWidth = 1.2 + beatIntensity * 0.5;
+                const lineAlpha = baseAlpha + Math.sin(t * 1.5) * 0.15; // Уменьшил мерцание
+                const lineWidth = 0.8 + beatIntensity * 0.3; // Уменьшил толщину
                 
                 ctx.strokeStyle = `rgba(255, 255, 255, ${lineAlpha})`;
                 ctx.lineWidth = lineWidth;
@@ -367,19 +322,13 @@
                 ctx.moveTo(0, 0);
                 ctx.lineTo(x * (heartSize/25), -y * (heartSize/25));
                 ctx.stroke();
-                
-                if (beatIntensity > 0.8 && i % 15 === 0) {
-                    ctx.fillStyle = `rgba(255, 255, 255, ${beatIntensity})`;
-                    ctx.beginPath();
-                    ctx.arc(x * (heartSize/25), -y * (heartSize/25), 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
             }
             
-            if (beatIntensity > 0.7) {
-                const glowRadius = heartSize/2 * beatIntensity;
+            // Уменьшил свечение
+            if (beatIntensity > 0.5) {
+                const glowRadius = heartSize/2 * beatIntensity * 0.7; // Уменьшил
                 const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, glowRadius);
-                gradient.addColorStop(0, `rgba(255, 107, 157, ${0.1 * beatIntensity})`);
+                gradient.addColorStop(0, `rgba(255, 107, 157, ${0.05 * beatIntensity})`);
                 gradient.addColorStop(1, 'rgba(255, 107, 157, 0)');
                 
                 ctx.fillStyle = gradient;
@@ -393,7 +342,17 @@
         }
         drawHeart();
         
-        // МУЗЫКА
+        // ВЕРНУЛ АНИМАЦИЮ ФОТО
+        function showPhotos() {
+            const photos = document.querySelectorAll('.photo');
+            
+            photos.forEach((photo, index) => {
+                setTimeout(() => {
+                    photo.classList.add('show');
+                }, index * 150); // Ускорил анимацию
+            });
+        }
+        
         const audio = document.getElementById('bgMusic');
         const musicNotice = document.getElementById('musicNotice');
         const heartContainer = document.getElementById('heartContainer');
@@ -409,14 +368,15 @@
             
             window.currentBeatIntensity = beatStrength;
             
+            // УМЕНЬШЕННАЯ ПУЛЬСАЦИЯ
             heartContainer.classList.add('heart-beat');
-            const scale = 1 + (beatStrength * 0.15);
+            const scale = 1 + (beatStrength * 0.08); // Было 0.15 - уменьшил
             heartContainer.style.transform = `scale(${scale})`;
             
             setTimeout(() => {
                 heartContainer.classList.remove('heart-beat');
                 heartContainer.style.transform = 'scale(1)';
-            }, 150);
+            }, 200);
             
             beatCounter++;
         }
@@ -429,92 +389,69 @@
             beatTimer = setInterval(triggerBeat, BEAT_INTERVAL);
         }
         
-        // iPhone FIX: Простая функция запуска музыки
         function startMusic() {
-            console.log('Запуск музыки...');
-            
-            // iPhone требует жеста пользователя
             audio.play().then(() => {
-                console.log('Музыка запущена на iPhone');
                 musicPlaying = true;
-                musicNotice.textContent = "♪ Музыка для Эле ♪";
+                musicNotice.textContent = "♪ Музыка ♪";
                 musicNotice.style.background = "rgba(255, 107, 157, 0.4)";
                 
+                // ВКЛЮЧАЕМ АНИМАЦИЮ ФОТО
+                showPhotos();
                 setTimeout(startVisualization, 500);
                 
                 setTimeout(() => {
                     musicNotice.style.opacity = "0";
                     setTimeout(() => musicNotice.style.display = "none", 800);
                 }, 3000);
-            }).catch(error => {
-                console.log('Ошибка запуска на iPhone:', error);
-                musicNotice.textContent = "Коснись экрана для запуска музыки";
-                musicNotice.style.background = "rgba(180, 80, 120, 0.4)";
+            }).catch(() => {
+                musicNotice.textContent = "Коснись для запуска музыки";
             });
         }
         
-        // iPhone FIX: Обработчик касаний
         function handleInteraction() {
-            console.log('Взаимодействие с iPhone');
-            
-            // Запускаем музыку при первом клике
             if (audio.paused && !musicPlaying) {
                 startMusic();
             } else if (!audio.paused && musicPlaying) {
-                // Если музыка играет, останавливаем
                 audio.pause();
                 musicPlaying = false;
                 if (beatTimer) clearInterval(beatTimer);
-                musicNotice.textContent = "Музыка остановлена. Коснись чтобы начать";
+                musicNotice.textContent = "Музыка остановлена";
                 musicNotice.style.display = "block";
                 musicNotice.style.opacity = "1";
             }
-            
-            // iPhone: снимаем обработчик после первого клика
-            document.removeEventListener('click', handleInteraction);
-            document.removeEventListener('touchstart', handleInteraction);
         }
         
         audio.volume = 0.7;
         
-        // iPhone FIX: Инициализация
         window.addEventListener('load', function() {
-            console.log('Сайт загружен, инициализация для iPhone');
-            
-            // 1. Сразу грузим фото (без ожидания музыки)
             loadPhotos();
-            
-            // 2. Инициализируем переменные
             window.currentBeatIntensity = 0;
             
-            // 3. iPhone: Вешаем обработчики на клик и касание
-            document.addEventListener('click', handleInteraction);
-            document.addEventListener('touchstart', handleInteraction, { passive: true });
-            
-            // 4. Проверяем, iOS ли это
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            // iPhone проверка
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
             if (isIOS) {
-                console.log('Определен iPhone/iOS, фото уже видны');
-                musicNotice.textContent = "Коснись экрана для запуска музыки";
+                musicNotice.textContent = "Коснись для запуска музыки";
+                document.addEventListener('touchstart', handleInteraction, { once: true });
             } else {
-                console.log('Не iOS, пробуем автозапуск');
-                // Для других устройств пробуем автозапуск
+                // Для ПК/Андроид - автозапуск
                 setTimeout(() => {
                     audio.play().then(() => {
                         musicPlaying = true;
-                        musicNotice.textContent = "♪ Музыка для Эле ♪";
-                        musicNotice.style.background = "rgba(255, 107, 157, 0.3)";
+                        musicNotice.textContent = "♪ Музыка ♪";
+                        showPhotos();
                         setTimeout(startVisualization, 500);
                         setTimeout(() => {
                             musicNotice.style.opacity = "0";
                             setTimeout(() => musicNotice.style.display = "none", 800);
                         }, 3000);
                     }).catch(() => {
-                        console.log("Ждем клика для запуска...");
+                        console.log("Ждем клика...");
                     });
-                }, 1500);
+                }, 1000);
             }
+            
+            document.addEventListener('click', handleInteraction);
         });
     </script>
 </body>
