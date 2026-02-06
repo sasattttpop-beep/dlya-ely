@@ -269,12 +269,14 @@
         z-index: -2;
         filter: brightness(0.5) contrast(1.1) hue-rotate(190deg);
     ">
-        <source src="video/bg.mp4" type="video/mp4">
+        <!-- ВАЖНО: имя файла исправлено! -->
+        <source src="video/ФУТАЖ_СНЕГ_ДЛЯ_ВИДЕО_4К_Realistic_Snow_Falling_Free_Stock_Footage_4K_HD_Video_Special_Effects (online-video-cutter.com) (1) (1).mp4" type="video/mp4">
     </video>
     
     <!-- МУЗЫКА -->
     <audio id="bgMusic" loop preload="auto" style="display: none;">
-        <source src="music/holod.mp3" type="audio/mpeg">
+        <!-- ВАЖНО: имя файла исправлено! -->
+        <source src="music/musik.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио
     </audio>
     
@@ -284,7 +286,7 @@
         </div>
         
         <div class="photos" id="photosContainer">
-            <!-- Фото будут добавлены автоматически из папки photos -->
+            <!-- Фото загрузятся автоматически -->
         </div>
         
         <div class="text floating" id="textContainer">
@@ -296,18 +298,25 @@
     <div class="music-notice" id="musicNotice">Кликни для запуска музыки</div>
 
     <script>
-        // Автозагрузка всех фото из папки photos
+        // ТВОИ ФОТО - точные имена файлов!
         const photoFiles = [
-            'photo1.jpg', 'photo2.jpg', 'photo3.jpg', 
-            'photo4.jpg', 'photo5.jpg', 'photo6.jpg',
-            'photo7.jpg', 'photo8.jpg', 'photo9.jpg'
+            'photo_2026-02-06_02-39-07.jpg',
+            'photo_2026-02-06_02-39-31.jpg',
+            'photo_2026-02-06_02-39-53.jpg',
+            'photo_2026-02-06_02-40-11.jpg',
+            'photo_2026-02-06_02-41-59.jpg'
         ];
         
         // Загружаем все фото
         function loadPhotos() {
             const photosContainer = document.getElementById('photosContainer');
             
+            // Очищаем контейнер
+            photosContainer.innerHTML = '';
+            
+            // Создаём фото элементы
             photoFiles.forEach((filename, index) => {
+                // Создаём элемент фото
                 const photoDiv = document.createElement('div');
                 photoDiv.className = 'photo';
                 photoDiv.innerHTML = `<img src="photos/${filename}" alt="Фото ${index + 1}">`;
@@ -584,7 +593,7 @@
             audio.play()
                 .then(() => {
                     musicPlaying = true;
-                    musicNotice.textContent = "♪ Shadowraze - Холод ♪";
+                    musicNotice.textContent = "♪ Музыка для Эли ♪";
                     musicNotice.style.background = "rgba(20, 60, 120, 0.4)";
                     musicNotice.style.borderColor = "rgba(100, 180, 255, 0.6)";
                     
@@ -657,7 +666,7 @@
                 setTimeout(() => {
                     startVisualization();
                 }, 500);
-                musicNotice.textContent = "♪ Shadowraze - Холод ♪";
+                musicNotice.textContent = "♪ Музыка для Эли ♪";
                 musicNotice.style.background = "rgba(20, 60, 120, 0.4)";
                 musicNotice.style.borderColor = "rgba(100, 180, 255, 0.6)";
                 
@@ -683,6 +692,12 @@
             
             // Инициализируем интенсивность бита
             window.currentBeatIntensity = 0;
+            
+            // Проверяем наличие файлов
+            console.log("Проверяю файлы...");
+            console.log("Музыка: music/musik.mp3");
+            console.log("Видео: video/ФУТАЖ_СНЕГ...mp4");
+            console.log("Фото:", photoFiles);
         });
     </script>
 </body>
